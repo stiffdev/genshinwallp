@@ -45,5 +45,5 @@ BoxDecoration _widgetBackground() {
 
   //
 
-  //return CardSwiper(peliculas: images);
+  //return CardSwiper(peliculas: images); wflkwfwfer
 }

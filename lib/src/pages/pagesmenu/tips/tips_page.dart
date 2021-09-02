@@ -38,8 +38,7 @@ class _TipsPageState extends State<TipsPage> {
   BoxDecoration _widgetBackground() {
     return BoxDecoration(
       image: DecorationImage(
-        image: NetworkImage(
-            "https://preview.redd.it/dwgetie8y5971.png?auto=webp&s=f1c930259ac1cd143a024df0152ba2caabad1d35"),
+        image: AssetImage("lib/src/assets/bg.png"),
         fit: BoxFit.cover,
       ),
     );

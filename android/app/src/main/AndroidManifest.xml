@@ -1,5 +1,5 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.genshinwallp">
+    package="com.skin.creator.genshin.live.wallpapers.wish.codes.map">
 
      <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
@@ -12,7 +12,7 @@
 
          <meta-data
             android:name="com.google.android.gms.ads.APPLICATION_ID"
-            android:value=""/>
+            android:value="ca-app-pub-8811478611109497~2453593437"/>
 
         <activity
             android:name=".MainActivity"

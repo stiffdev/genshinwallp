@@ -44,7 +44,7 @@ dependencies:
   provider: ^5.0.0
   html: ^0.15.0
   http: ^0.13.3
-  in_app_review: ^2.0.2
+  launch_review: ^3.0.1
   url_launcher_web: ^2.0.2
   shared_preferences: ^2.0.6
   fluttertoast: ^8.0.8

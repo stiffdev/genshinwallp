@@ -12,13 +12,11 @@ import 'package:genshinwallp/src/widgets/item.dart';
 import 'package:genshinwallp/src/widgets/rat/like_dialog.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:image_gallery_saver/image_gallery_saver.dart';
-import 'package:in_app_review/in_app_review.dart';
+import 'package:launch_review/launch_review.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:provider/provider.dart';
 import 'package:screenshot/screenshot.dart';
-
-enum Availability { LOADING, AVAILABLE, UNAVAILABLE }
 
 class WallpaperPage extends StatefulWidget {
   @override
@@ -32,12 +30,6 @@ class _WallpaperPageState extends State<WallpaperPage> {
   final _screenshotController = ScreenshotController();
   var isVisible = true;
 
-  Future<void> _requestReview() => _inAppReview.requestReview();
-
-  final InAppReview _inAppReview = InAppReview.instance;
-
-  Availability _availability = Availability.LOADING;
-
   final prefs = new PreferenciasUsuario();
 
   InterstitialAd? _interstitialAd;
@@ -47,24 +39,7 @@ class _WallpaperPageState extends State<WallpaperPage> {
   void initState() {
     super.initState();
     _loadInterstitialAd();
-    WidgetsBinding.instance!.addPostFrameCallback((_) async {
-      try {
-        final isAvailable = await _inAppReview.isAvailable();
-
-        setState(() {
-          if (isAvailable) {
-            _availability = Availability.AVAILABLE;
-          }
-          /*&& !Platform.isAndroid
-              ? Availability.AVAILABLE
-              : Availability.UNAVAILABLE;*/
-        });
-        print("availability   ->   $_availability");
-      } catch (e) {
-        print("error availability rating ${Platform.environment}");
-        setState(() => _availability = Availability.UNAVAILABLE);
-      }
-    });
+    WidgetsBinding.instance!.addPostFrameCallback((_) async {});
   }
 
   @override
@@ -75,7 +50,11 @@ class _WallpaperPageState extends State<WallpaperPage> {
     final provider = Provider.of<SaveWpProvider>(context);
 
     if (provider.canRate) {
-      _requestReview();
+      LaunchReview.launch(
+        androidAppId: "com.skin.creator.genshin.live.wallpapers.wish.codes.map",
+        iOSAppId: "",
+      );
+      provider.canRate = false;
     }
 
     return Scaffold(

@@ -144,10 +144,9 @@ class _BackgroundVideoState extends State<BackgroundVideo> {
 //Getting the resp from the targeted
     if (Platform.isAndroid) {
       checkPolicyEachPlatform(
-          'https://sites.google.com/view/genshin-gplay-policy/inicio');
+          'https://ffcodes.wordpress.com/2021/09/15/privacy-policy-live-wallpaper-genshin-app/');
     } else {
-      checkPolicyEachPlatform(
-          'https://sites.google.com/view/genshin-ios-policy/inicio');
+      checkPolicyEachPlatform('');
     }
   }
 

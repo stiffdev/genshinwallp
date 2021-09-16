@@ -5,6 +5,7 @@ import 'package:genshinwallp/src/pages/menu/main_menu.dart';
 import 'package:genshinwallp/src/pages/menu/menu_dos.dart';
 import 'package:genshinwallp/src/pages/pagesmenu/characters/bg_selection_page.dart';
 import 'package:genshinwallp/src/pages/pagesmenu/characters/characters_selection.dart';
+import 'package:genshinwallp/src/pages/pagesmenu/codes/cod_page.dart';
 import 'package:genshinwallp/src/pages/pagesmenu/codes/codes_page.dart';
 import 'package:genshinwallp/src/pages/pagesmenu/livewallp/live2_wallp.dart';
 import 'package:genshinwallp/src/pages/pagesmenu/livewallp/live_wallp_page.dart';
@@ -53,7 +54,7 @@ class MyApp extends StatelessWidget {
           '/tips': (BuildContext context) => TipsPage(),
           '/saveWallp': (BuildContext context) => SaveWallpaperPage(),
           '/skinWallp': (BuildContext context) => WallpaperPage(),
-          '/codes': (BuildContext context) => CodesPage(),
+          '/codes': (BuildContext context) => CodPage(),
           '/map': (BuildContext context) => MapPage(),
           '/live': (BuildContext context) => LiveWallpaperPage(),
           '/saveLive': (BuildContext context) => SaveLiveWallpaperPage(),

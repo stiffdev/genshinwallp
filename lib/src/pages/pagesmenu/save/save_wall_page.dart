@@ -11,14 +11,12 @@ import 'package:genshinwallp/src/widgets/item.dart';
 import 'package:genshinwallp/src/widgets/rat/like_dialog.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:image_gallery_saver/image_gallery_saver.dart';
+import 'package:launch_review/launch_review.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:provider/provider.dart';
 import 'package:screenshot/screenshot.dart';
 import 'package:permission_handler/permission_handler.dart';
-import 'package:in_app_review/in_app_review.dart';
 import 'package:fluttertoast/fluttertoast.dart';
-
-enum Availability { LOADING, AVAILABLE, UNAVAILABLE }
 
 class SaveWallpaperPage extends StatefulWidget {
   @override
@@ -29,11 +27,6 @@ class SaveWallpaperPage extends StatefulWidget {
 }
 
 class _SaveWallpaperPageState extends State<SaveWallpaperPage> {
-  final InAppReview _inAppReview = InAppReview.instance;
-  String _appStoreId = ''; //1580913077
-  String _microsoftStoreId = '';
-  Availability _availability = Availability.LOADING;
-
   final prefs = new PreferenciasUsuario();
 
   InterstitialAd? _interstitialAd;
@@ -44,36 +37,8 @@ class _SaveWallpaperPageState extends State<SaveWallpaperPage> {
     super.initState();
     _loadInterstitialAd();
 
-    WidgetsBinding.instance!.addPostFrameCallback((_) async {
-      try {
-        final isAvailable = await _inAppReview.isAvailable();
-
-        setState(() {
-          if (isAvailable) {
-            _availability = Availability.AVAILABLE;
-          }
-          /*&& !Platform.isAndroid
-              ? Availability.AVAILABLE
-              : Availability.UNAVAILABLE;*/
-        });
-        print("availability   ->   $_availability");
-      } catch (e) {
-        print("error availability rating ${Platform.environment}");
-        setState(() => _availability = Availability.UNAVAILABLE);
-      }
-    });
+    WidgetsBinding.instance!.addPostFrameCallback((_) async {});
   }
-
-  void _setAppStoreId(String id) => _appStoreId = id;
-
-  void _setMicrosoftStoreId(String id) => _microsoftStoreId = id;
-
-  Future<void> _requestReview() => _inAppReview.requestReview();
-
-  Future<void> _openStoreListing() => _inAppReview.openStoreListing(
-        appStoreId: _appStoreId,
-        microsoftStoreId: _microsoftStoreId,
-      );
 
   static GlobalKey previewContainer = new GlobalKey();
   final _screenshotController = ScreenshotController();
@@ -87,7 +52,10 @@ class _SaveWallpaperPageState extends State<SaveWallpaperPage> {
 
     if (provider.canRate) {
       print('request review func');
-      _requestReview();
+      LaunchReview.launch(
+        androidAppId: "com.skin.creator.genshin.live.wallpapers.wish.codes.map",
+        iOSAppId: "",
+      );
       provider.canRate = false;
     }
 
